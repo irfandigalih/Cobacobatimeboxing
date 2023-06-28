@@ -31,6 +31,7 @@ class _MyWidgetState extends State<TimeboxingGreetingInfo> {
               Text(
                 'Username',
                 style: TimeBoxingTextStyle.headline4(
+                  TimeBoxingFontWeight.bold,
                   TimeBoxingColors.neutralBlack(),
                 ),
               ),
