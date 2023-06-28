@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:timeboxing/Scenes/Page/onboarding_page.dart';
-import 'package:timeboxing/Scenes/Page/shared_design_page.dart';
 
 enum NavigationPage { sharedDesign, main }
 
@@ -13,7 +12,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: OnboardingPage(),
     );
   }
