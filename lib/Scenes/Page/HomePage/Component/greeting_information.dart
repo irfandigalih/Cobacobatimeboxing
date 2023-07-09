@@ -3,6 +3,23 @@ import 'package:timeboxing/Shared/Extension/colors_style_extension.dart';
 import 'package:timeboxing/Shared/Extension/icons_style_extension.dart';
 import 'package:timeboxing/Shared/Extension/text_style_extension.dart';
 
+class GreetingsItem {
+  String username;
+  String greetingMessage;
+
+  GreetingsItem({
+    required this.username,
+    required this.greetingMessage,
+  });
+}
+
+final List<GreetingsItem> greetingItems = [
+  GreetingsItem(
+    username: 'JordyNoSkill',
+    greetingMessage: 'Have A Great Day Jord',
+  )
+];
+
 class TimeboxingGreetingInfo extends StatefulWidget {
   const TimeboxingGreetingInfo({super.key});
 
@@ -14,6 +31,7 @@ class _MyWidgetState extends State<TimeboxingGreetingInfo> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: TimeBoxingColors.primary70(TimeBoxingColorType.tint),
       padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,7 +40,7 @@ class _MyWidgetState extends State<TimeboxingGreetingInfo> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Greetings',
+                greetingItems[0].username,
                 style: TimeBoxingTextStyle.paragraph2(
                   TimeBoxingFontWeight.regular,
                   TimeBoxingColors.neutralBlack(),
@@ -30,7 +48,7 @@ class _MyWidgetState extends State<TimeboxingGreetingInfo> {
               ),
               const SizedBox(height: 4),
               Text(
-                'Username',
+                greetingItems[0].greetingMessage,
                 style: TimeBoxingTextStyle.headline4(
                   TimeBoxingFontWeight.bold,
                   TimeBoxingColors.neutralBlack(),
@@ -39,7 +57,7 @@ class _MyWidgetState extends State<TimeboxingGreetingInfo> {
             ],
           ),
           const Spacer(),
-          const Row(
+          Row(
             children: [
               Icon(
                 TimeboxingIcons.alarm,
