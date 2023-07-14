@@ -150,7 +150,7 @@ class _TimeboxingInvitationCardState extends State<TimeboxingInvitationCard> {
                                   child: Text(
                                     invitationCard.taskTime,
                                     style: TimeBoxingTextStyle.paragraph3(
-                                        TimeBoxingFontWeight.bold,
+                                        TimeBoxingFontWeight.regular,
                                         TimeBoxingColors.neutralBlack()),
                                   ),
                                 ),
