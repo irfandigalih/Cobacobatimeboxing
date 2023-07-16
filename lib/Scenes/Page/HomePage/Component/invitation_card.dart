@@ -110,13 +110,11 @@ class _TimeboxingInvitationCardState extends State<TimeboxingInvitationCard> {
                                             TimeBoxingColorType.tint)),
                                   ),
                                 ),
-                                //how to make dot icon flutter
                                 const SizedBox(
                                   width: 8,
                                 ),
                                 Container(
-                                  margin:
-                                      const EdgeInsets.fromLTRB(0, 7.5, 8, 7.5),
+                                  margin: const EdgeInsets.fromLTRB(0, 7, 8, 7),
                                   width: 4,
                                   height: 4,
                                   decoration: BoxDecoration(
@@ -135,8 +133,7 @@ class _TimeboxingInvitationCardState extends State<TimeboxingInvitationCard> {
                                   ),
                                 ),
                                 Container(
-                                  margin:
-                                      const EdgeInsets.fromLTRB(0, 7.5, 8, 7.5),
+                                  margin: const EdgeInsets.fromLTRB(0, 7, 8, 7),
                                   width: 4,
                                   height: 4,
                                   decoration: BoxDecoration(
@@ -214,7 +211,7 @@ class _TimeboxingInvitationCardState extends State<TimeboxingInvitationCard> {
                     ],
                   ),
                 ],
-              ), //SEBELUM DEVELOP, ROW JANGAN LUPA DIHAPUS  KARENA HANYA BUAT PENANDA DOANG
+              ),
             ),
           ),
         ],
