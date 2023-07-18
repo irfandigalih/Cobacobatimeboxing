@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:timeboxing/Scenes/Page/HomePage/Component/greeting_information.dart';
 import 'package:timeboxing/Scenes/Page/HomePage/Component/recomendation_component.dart';
+import 'package:timeboxing/Scenes/Page/HomePage/Component/tutorial.dart';
 import 'package:timeboxing/Scenes/Page/HomePage/Component/weekly_date_picker_component.dart';
 import 'package:timeboxing/Scenes/Page/HomePage/Component/invitation_card.dart';
 import 'package:timeboxing/Scenes/Page/HomePage/Component/today_task.dart';
@@ -26,19 +27,36 @@ class _MyWidgetState extends State<HomePage> {
 
   final List<TimeboxingHomePlaceholder> _placeholders = [
     TimeboxingHomePlaceholder(
-        id: 'Greeting', isShow: true, widget: TimeboxingGreetingInfo()),
+      id: 'Greeting',
+      isShow: true,
+      widget: TimeboxingGreetingInfo(),
+    ),
     TimeboxingHomePlaceholder(
-        id: 'DatePick', isShow: true, widget: TimeboxingDatePick()),
+      id: 'DatePick',
+      isShow: true,
+      widget: TimeboxingDatePick(),
+    ),
     TimeboxingHomePlaceholder(
-        id: 'InvitationCard', isShow: true, widget: TimeboxingInvitationCard()),
+      id: 'InvitationCard',
+      isShow: true,
+      widget: TimeboxingInvitationCard(),
+    ),
     TimeboxingHomePlaceholder(
-        id: 'TodayTask', isShow: true, widget: TimeboxingTodayTask()),
+      id: 'TodayTask',
+      isShow: true,
+      widget: TimeboxingTodayTask(),
+    ),
     TimeboxingHomePlaceholder(
       id: 'Recommendation',
       isShow: true,
       widget: RecommendationCardWidget(
         recommendationCard: recommendationCard,
       ),
+    ),
+    TimeboxingHomePlaceholder(
+      id: 'Tutorial',
+      isShow: true,
+      widget: Tutorial(),
     ),
   ];
 
