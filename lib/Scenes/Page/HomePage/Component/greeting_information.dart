@@ -24,7 +24,7 @@ class _MyWidgetState extends State<TimeboxingGreetingInfo> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Flexible(
+          Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
