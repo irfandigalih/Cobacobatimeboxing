@@ -22,7 +22,7 @@ class _MyWidgetState extends State<TimeboxingGreetingInfo> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Flexible(
+          Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -49,7 +49,7 @@ class _MyWidgetState extends State<TimeboxingGreetingInfo> {
             ),
           ),
           const Spacer(),
-          Row(
+          const Row(
             children: [
               Icon(
                 TimeboxingIcons.alarm,
