@@ -21,26 +21,35 @@ class _OnboardingPage1State extends State<OnboardingPage1> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('Time Boxing'),
+              Text('Time Boxing',
+                  style: TimeBoxingTextStyle.headline1Plus(
+                    TimeBoxingFontWeight.bold,
+                    TimeBoxingColors.text90(TimeBoxingColorType.shade),
+                  )),
               RichText(
                   text: TextSpan(
                       text: 'is a',
-                      style: TimeBoxingTextStyle.paragraph2(
+                      style: TimeBoxingTextStyle.headline1Plus(
                           TimeBoxingFontWeight.bold,
-                          TimeBoxingColors.neutralBlack()),
+                          TimeBoxingColors.text90(TimeBoxingColorType.shade)),
                       children: <TextSpan>[
                     TextSpan(
                       text: " Daily Planner",
-                      style: TimeBoxingTextStyle.paragraph2(
-                          TimeBoxingFontWeight.regular,
-                          TimeBoxingColors.neutralBlack()),
+                      style: TimeBoxingTextStyle.headline1Plus(
+                          TimeBoxingFontWeight.bold,
+                          TimeBoxingColors.primary40(
+                              TimeBoxingColorType.shade)),
                     )
                   ])),
               const SizedBox(
                 height: 25,
               ),
-              const Text(
-                  'Organize tasks, improve productivity, and increase your focus,'),
+              Text(
+                'Organize tasks, improve productivity, and increase your focus,',
+                style: TimeBoxingTextStyle.paragraph1(
+                    TimeBoxingFontWeight.regular,
+                    TimeBoxingColors.text90(TimeBoxingColorType.shade)),
+              ),
               const SizedBox(
                 height: 44,
               ),
@@ -52,24 +61,30 @@ class _OnboardingPage1State extends State<OnboardingPage1> {
                     'https://www.american-time.com/wp-content/uploads/2021/02/91-National-24V-12in-Black-Steel-Round-Flush-Mount.jpg'),
               ),
               const Spacer(),
-              const Center(
+              Center(
                 child: Text(
                     textAlign: TextAlign.center,
+                    style: TimeBoxingTextStyle.paragraph1(
+                        TimeBoxingFontWeight.regular,
+                        TimeBoxingColors.text90(TimeBoxingColorType.shade)),
                     'Full access awaits! Please login for a personalized and comprehensive experience.'),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Container(
                 padding: const EdgeInsets.fromLTRB(150, 4, 150, 4),
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                  color: Colors.green,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  color: TimeBoxingColors.primary30(TimeBoxingColorType.shade),
                 ),
                 width: MediaQuery.of(context).size.width,
-                child: const Text(
+                child: Text(
                   textAlign: TextAlign.center,
-                  'data',
+                  style: TimeBoxingTextStyle.headline4(
+                      TimeBoxingFontWeight.bold,
+                      TimeBoxingColors.neutralWhite()),
+                  'Get Started',
                 ),
               )
             ],
