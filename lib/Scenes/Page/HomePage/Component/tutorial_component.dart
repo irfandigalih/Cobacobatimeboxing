@@ -31,6 +31,7 @@ class _MyWidgetState extends State<Tutorial> {
             height: 16,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
@@ -51,9 +52,10 @@ class _MyWidgetState extends State<Tutorial> {
                     width: 23,
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'data',
+                        'TimeBox Priority Creation',
                         style: TimeBoxingTextStyle.paragraph2(
                           TimeBoxingFontWeight.bold,
                           TimeBoxingColors.text(TimeBoxingColorType.shade),
@@ -63,7 +65,16 @@ class _MyWidgetState extends State<Tutorial> {
                         height: 12,
                       ),
                       Text(
-                        'data',
+                        'Need a hand for our app? Please ',
+                        overflow: TextOverflow.visible,
+                        style: TimeBoxingTextStyle.paragraph3(
+                          TimeBoxingFontWeight.regular,
+                          TimeBoxingColors.text30(TimeBoxingColorType.tint),
+                        ),
+                      ),
+                      Text(
+                        'welcome, we got your back!',
+                        overflow: TextOverflow.visible,
                         style: TimeBoxingTextStyle.paragraph3(
                           TimeBoxingFontWeight.regular,
                           TimeBoxingColors.text30(TimeBoxingColorType.tint),
@@ -76,7 +87,11 @@ class _MyWidgetState extends State<Tutorial> {
                   ),
                 ],
               ),
-              Icon(Icons.chevron_right)
+              Icon(
+                Icons.chevron_right,
+                size: 16,
+                color: TimeBoxingColors.primary40(TimeBoxingColorType.shade),
+              )
             ],
           ),
         ],
