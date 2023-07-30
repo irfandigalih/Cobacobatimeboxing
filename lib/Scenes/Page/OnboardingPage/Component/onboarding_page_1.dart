@@ -54,7 +54,7 @@ class _OnboardingPage1State extends State<OnboardingPage1> {
                   ),
                 ],
               ),
-              Spacer(),
+              const Spacer(),
               Flexible(
                 flex: 2,
                 child: Center(
@@ -63,7 +63,7 @@ class _OnboardingPage1State extends State<OnboardingPage1> {
                       'https://www.american-time.com/wp-content/uploads/2021/02/91-National-24V-12in-Black-Steel-Round-Flush-Mount.jpg'),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Column(
                 children: [
                   Center(
