@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:timeboxing/Scenes/Page/HomePage/Component/TutorialCard/Model/tutorial_model.dart';
-import 'package:timeboxing/Shared/Extension/colors_style_extension.dart';
-import 'package:timeboxing/Shared/Extension/text_style_extension.dart';
+import 'package:timeboxing/Shared/Extension/extension_barrel.dart';
 
 class TutorialItem extends StatefulWidget {
   const TutorialItem({super.key, required this.tutorialModel});
@@ -33,7 +32,7 @@ class _MyWidgetState extends State<TutorialItem> {
                       fit: BoxFit.fill, widget.tutorialModel.image),
                 ),
                 const SizedBox(
-                  width: 23,
+                  width: 24,
                 ),
                 Flexible(
                   child: Column(

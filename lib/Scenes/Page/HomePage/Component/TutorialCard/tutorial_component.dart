@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:timeboxing/Scenes/Page/HomePage/Component/TutorialCard/Model/tutorial_model.dart';
 import 'package:timeboxing/Scenes/Page/HomePage/Component/TutorialCard/tutorial_item.dart';
-import 'package:timeboxing/Shared/Extension/colors_style_extension.dart';
-import 'package:timeboxing/Shared/Extension/text_style_extension.dart';
+import 'package:timeboxing/Shared/Extension/extension_barrel.dart';
 
 class TutorialCard extends StatefulWidget {
   const TutorialCard({super.key});
