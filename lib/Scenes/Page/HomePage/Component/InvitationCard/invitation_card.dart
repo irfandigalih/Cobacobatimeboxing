@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:timeboxing/Shared/Extension/colors_style_extension.dart';
 import 'package:timeboxing/Shared/Extension/text_style_extension.dart';
 import 'package:timeboxing/Scenes/Page/HomePage/Model/invitation_card_model.dart';
+import 'package:timeboxing/Shared/Widget/TaskList/Model/task_item_model.dart';
 
 class TimeboxingInvitationCard extends StatefulWidget {
   const TimeboxingInvitationCard({super.key});
@@ -14,12 +15,17 @@ class TimeboxingInvitationCard extends StatefulWidget {
 class _TimeboxingInvitationCardState extends State<TimeboxingInvitationCard> {
   final InvitationCard invitationCard = InvitationCard(
       username: "Galih Clueless",
-      taskDate: "June 30, 2023",
-      taskTime: "14.00",
-      taskName: "Ascendant cuma 1 hari sisanya gold lagi",
-      taskPriority: TaskPriorityType.P0,
       userAvatar:
-          'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg');
+          'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+      taskItem: TaskItem(
+        id: '1',
+        name: 'Tutorial Meng-Aim dengan benar',
+        description: 'Harus punya pc bagus',
+        taskPriority: TaskPriority(id: '1', type: TaskPriorityType.p0),
+        time: '08.00',
+        date: '1 June',
+      ));
+
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(
@@ -84,7 +90,7 @@ class _TimeboxingInvitationCardState extends State<TimeboxingInvitationCard> {
                                   )
                                 ])),
                             Text(
-                              invitationCard.taskName,
+                              invitationCard.taskItem.name,
                               style: TimeBoxingTextStyle.paragraph2(
                                   TimeBoxingFontWeight.bold,
                                   TimeBoxingColors.neutralBlack()),
@@ -103,7 +109,7 @@ class _TimeboxingInvitationCardState extends State<TimeboxingInvitationCard> {
                                       borderRadius: const BorderRadius.all(
                                           Radius.circular(4))),
                                   child: Text(
-                                    invitationCard.namePriority ?? '',
+                                    invitationCard.taskItem.taskPriority.name,
                                     style: TimeBoxingTextStyle.paragraph4(
                                         TimeBoxingFontWeight.bold,
                                         TimeBoxingColors.accent90(
@@ -126,7 +132,7 @@ class _TimeboxingInvitationCardState extends State<TimeboxingInvitationCard> {
                                   padding:
                                       const EdgeInsets.fromLTRB(0, 2, 8, 2),
                                   child: Text(
-                                    invitationCard.taskDate,
+                                    invitationCard.taskItem.date,
                                     style: TimeBoxingTextStyle.paragraph3(
                                         TimeBoxingFontWeight.bold,
                                         TimeBoxingColors.neutralBlack()),
@@ -145,7 +151,7 @@ class _TimeboxingInvitationCardState extends State<TimeboxingInvitationCard> {
                                   padding:
                                       const EdgeInsets.fromLTRB(0, 2, 0, 2),
                                   child: Text(
-                                    invitationCard.taskTime,
+                                    invitationCard.taskItem.time,
                                     style: TimeBoxingTextStyle.paragraph3(
                                         TimeBoxingFontWeight.regular,
                                         TimeBoxingColors.neutralBlack()),

@@ -5,61 +5,119 @@ import 'package:timeboxing/Shared/Extension/text_style_extension.dart';
 import 'package:timeboxing/Shared/Widget/TaskList/Model/task_item_model.dart';
 
 class TaskList extends StatefulWidget {
-  const TaskList({super.key});
+  const TaskList({super.key, required this.taskItems});
+  final List<TaskItem> taskItems;
 
   @override
   State<TaskList> createState() => _TimeboxingTodayTaskState();
 }
 
 class _TimeboxingTodayTaskState extends State<TaskList> {
-  final TaskItem _taskItem = TaskItem(
-    description: 'Ini Jordy gatau',
-    id: '12',
-    name: 'Mengerjakan Tugas apa',
-    taskPriority: TaskPriority(type: TaskPriorityType.p0),
-    time: '08.00',
-  );
+  List<TodayTask> todayTasks = [];
+
+  List<TodayTask> _generateTodayTask(List<TaskItem> taskItems) {
+    List<TodayTask> mutatedTodayTask = [];
+    List<TaskPriority> mutatedTaskPrioties = [];
+
+    for (final taskItem in taskItems) {
+      if (!mutatedTaskPrioties.contains(taskItem.taskPriority)) {
+        mutatedTaskPrioties.add(taskItem.taskPriority);
+      }
+    }
+
+    for (final taskPriority in mutatedTaskPrioties) {
+      TodayTask todayTask =
+          TodayTask(taskPriority: taskPriority, taskItems: []);
+
+      for (final taskItem in taskItems) {
+        if (taskItem.taskPriority == taskPriority) {
+          todayTask.taskItems.add(taskItem);
+        }
+      }
+
+      mutatedTodayTask.add(todayTask);
+    }
+
+    mutatedTodayTask.sort((todayTaskPrevious, todayTaskNext) {
+      return todayTaskPrevious.taskPriority.typeWeight
+          .compareTo(todayTaskNext.taskPriority.typeWeight);
+    });
+
+    return mutatedTodayTask;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    todayTasks = _generateTodayTask(widget.taskItems);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
+      child: Column(
+        children: todayTasks
+            .map((todayTask) => TaskPriorityCell(
+                  taskItems: todayTask.taskItems,
+                  taskPriority: todayTask.taskPriority,
+                ))
+            .toList(),
+      ),
+    );
+  }
+}
+
+class TaskPriorityCell extends StatefulWidget {
+  const TaskPriorityCell(
+      {super.key, required this.taskItems, required this.taskPriority});
+  final TaskPriority taskPriority;
+  final List<TaskItem> taskItems;
+
+  @override
+  State<TaskPriorityCell> createState() => _TaskPriorityCellState();
+}
+
+class _TaskPriorityCellState extends State<TaskPriorityCell> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
       child: IntrinsicHeight(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Flexible(
-              flex: 2,
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: _taskItem.taskPriority.color,
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(_taskItem.taskPriority.label ?? '',
-                        style: TimeBoxingTextStyle.headline2(
-                          TimeBoxingFontWeight.bold,
-                          TimeBoxingColors.neutralWhite(),
-                        )),
-                    Text(_taskItem.taskPriority.name ?? '',
-                        style: TimeBoxingTextStyle.paragraph5(
-                          TimeBoxingFontWeight.bold,
-                          TimeBoxingColors.neutralWhite(),
-                        )),
-                  ],
-                ),
+            Container(
+              // Need to set static width, to overcome responsive issue
+              width: 56,
+              decoration: BoxDecoration(
+                color: widget.taskPriority.color,
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(widget.taskPriority.label,
+                      style: TimeBoxingTextStyle.headline2(
+                        TimeBoxingFontWeight.bold,
+                        TimeBoxingColors.neutralWhite(),
+                      )),
+                  Text(widget.taskPriority.name,
+                      textAlign: TextAlign.center,
+                      style: TimeBoxingTextStyle.paragraph5(
+                        TimeBoxingFontWeight.bold,
+                        TimeBoxingColors.neutralWhite(),
+                      )),
+                ],
               ),
             ),
+            const SizedBox(
+              width: 24,
+            ),
             Expanded(
-              flex: 8,
               child: Column(
-                children: [
-                  Task(taskItem: _taskItem),
-                  Task(taskItem: _taskItem),
-                  Task(taskItem: _taskItem),
-                ],
+                children: widget.taskItems
+                    .map((taskItem) => TaskItemCell(taskItem: taskItem))
+                    .toList(),
               ),
             ),
           ],
@@ -69,14 +127,14 @@ class _TimeboxingTodayTaskState extends State<TaskList> {
   }
 }
 
-class Task extends StatefulWidget {
-  const Task({super.key, required this.taskItem});
+class TaskItemCell extends StatefulWidget {
+  const TaskItemCell({super.key, required this.taskItem});
   final TaskItem taskItem;
   @override
-  State<Task> createState() => _MyWidgetState();
+  State<TaskItemCell> createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends State<Task> {
+class _MyWidgetState extends State<TaskItemCell> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -114,11 +172,11 @@ class _MyWidgetState extends State<Task> {
                 ),
               ),
               const SizedBox(
-                width: 4,
+                width: 8,
               ),
               const Icon(
                 Icons.play_arrow,
-                size: 12,
+                size: 8,
               )
             ],
           ),
