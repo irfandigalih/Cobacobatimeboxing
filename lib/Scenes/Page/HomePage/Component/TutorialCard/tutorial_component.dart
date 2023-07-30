@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:timeboxing/Scenes/Page/HomePage/Component/TutorialCard/Model/tutorial_model.dart';
+import 'package:timeboxing/Scenes/Page/HomePage/Component/TutorialCard/tutorial_item.dart';
 import 'package:timeboxing/Shared/Extension/colors_style_extension.dart';
 import 'package:timeboxing/Shared/Extension/text_style_extension.dart';
 
@@ -10,11 +12,45 @@ class TutorialCard extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<TutorialCard> {
+  //Dummy Properties
+  final List<TutorialModel> tutorialModels = [
+    TutorialModel(
+      id: '1',
+      tittle: 'TimeBox Priority Creation',
+      description: 'Need a hand for our app? Please welcome, we got your back!',
+      image:
+          'https://i.kym-cdn.com/entries/icons/original/000/043/403/cover3.jpg',
+    ),
+    TutorialModel(
+      id: '2',
+      tittle: 'What is TimeBox?',
+      description: 'Need a hand for our app? Please welcome, we got your back!',
+      image:
+          'https://i.kym-cdn.com/entries/icons/original/000/043/403/cover3.jpg',
+    ),
+    TutorialModel(
+      id: '3',
+      tittle: 'Creating Best Priority List',
+      description: 'Need a hand for our app? Please welcome, we got your back!',
+      image:
+          'https://i.kym-cdn.com/entries/icons/original/000/043/403/cover3.jpg',
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color: TimeBoxingColors.neutralWhite(),
+        boxShadow: [
+          BoxShadow(
+            offset: const Offset(0, 0),
+            color: TimeBoxingColors.neutralBlack().withOpacity(0.08),
+            blurRadius: 8,
+          ),
+        ],
+      ),
       margin: const EdgeInsets.only(top: 24),
-      color: TimeBoxingColors.neutralWhite(),
       padding: const EdgeInsets.all(24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,62 +65,10 @@ class _MyWidgetState extends State<TutorialCard> {
           const SizedBox(
             height: 16,
           ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      height: 75,
-                      decoration: BoxDecoration(
-                        color: TimeBoxingColors.primary50(
-                            TimeBoxingColorType.tint),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(4)),
-                      ),
-                      child: Image.network(
-                          fit: BoxFit.fill,
-                          'https://i.kym-cdn.com/entries/icons/original/000/043/403/cover3.jpg'),
-                    ),
-                    const SizedBox(
-                      width: 23,
-                    ),
-                    Flexible(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'TimeBox Priority Creation',
-                            style: TimeBoxingTextStyle.paragraph2(
-                              TimeBoxingFontWeight.bold,
-                              TimeBoxingColors.text(TimeBoxingColorType.shade),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          Text(
-                            'Need a hand for our app? Please welcome, we got your back!',
-                            style: TimeBoxingTextStyle.paragraph3(
-                              TimeBoxingFontWeight.regular,
-                              TimeBoxingColors.text30(TimeBoxingColorType.tint),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Icon(
-                Icons.chevron_right,
-                size: 16,
-                color: TimeBoxingColors.primary40(TimeBoxingColorType.shade),
-              )
-            ],
-          ),
+          ...tutorialModels
+              .map(
+                  (tutorialModel) => TutorialItem(tutorialModel: tutorialModel))
+              .toList()
         ],
       ),
     );
