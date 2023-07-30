@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:timeboxing/Shared/Extension/extension_barrel.dart';
 
 class OnboardingPage1 extends StatefulWidget {
@@ -56,10 +54,7 @@ class _OnboardingPage1State extends State<OnboardingPage1> {
                   ),
                 ],
               ),
-              const Flexible(
-                flex: 1,
-                child: SizedBox(),
-              ),
+              Spacer(),
               Flexible(
                 flex: 2,
                 child: Center(
@@ -68,10 +63,7 @@ class _OnboardingPage1State extends State<OnboardingPage1> {
                       'https://www.american-time.com/wp-content/uploads/2021/02/91-National-24V-12in-Black-Steel-Round-Flush-Mount.jpg'),
                 ),
               ),
-              const Flexible(
-                flex: 4,
-                child: SizedBox(),
-              ),
+              Spacer(),
               Column(
                 children: [
                   Center(
@@ -86,7 +78,7 @@ class _OnboardingPage1State extends State<OnboardingPage1> {
                     height: 30,
                   ),
                   Container(
-                    padding: const EdgeInsets.fromLTRB(150, 4, 150, 4),
+                    padding: const EdgeInsets.symmetric(vertical: 12),
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(8)),
                       color:
